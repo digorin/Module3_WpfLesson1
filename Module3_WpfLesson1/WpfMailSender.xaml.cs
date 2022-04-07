@@ -29,6 +29,7 @@ namespace Module3_WpfLesson1
 
         private void btnSendEmail_Click(object sender, RoutedEventArgs e)
         {
+        //Получаем пароль из поля на форме
             Config.password = passwordBox.Password;
             EmailSendServiceClass.SMTPClient();
         }
