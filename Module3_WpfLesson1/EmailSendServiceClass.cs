@@ -13,7 +13,7 @@ namespace Module3_WpfLesson1
 {
     public class EmailSendServiceClass
     {
-        public static void SMTPClient()
+        public static void SMTPClient(string subject, string message)
         {
             // отправитель - устанавливаем адрес и отображаемое в письме имя
             MailAddress from = new MailAddress(Config.senderAdress, Config.senderName);
@@ -22,9 +22,9 @@ namespace Module3_WpfLesson1
             // создаем объект сообщения
             MailMessage m = new MailMessage(from, to);
             // тема письма
-            m.Subject = Config.messageSubject;
+            m.Subject = subject;
             // текст письма
-            m.Body = Config.messageBody;
+            m.Body = message;
             // письмо представляет код html
             m.IsBodyHtml = true;
 
