@@ -18,6 +18,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\MyControls\MyControls.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Resource Include="Resourses\Me.jpeg" />
   </ItemGroup>
 
