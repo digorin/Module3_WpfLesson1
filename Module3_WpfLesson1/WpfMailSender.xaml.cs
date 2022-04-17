@@ -77,5 +77,20 @@ namespace Module3_WpfLesson1
         {
 
         }
+
+
+        private void tscTabSwitcher_btnNextClick(object sender, RoutedEventArgs e)
+        {
+            if (tabControl1.SelectedIndex != tabControl1.Items.Count - 1)
+                tabControl1.SelectedIndex = tabControl1.SelectedIndex + 1;
+        }
+
+        private void tscTabSwitcher_btnPreviousClick(object sender, RoutedEventArgs e)
+        {
+            if (tabControl1.SelectedIndex != 0)
+                tabControl1.SelectedIndex = tabControl1.SelectedIndex - 1;
+        }
     }
+
 }
+
