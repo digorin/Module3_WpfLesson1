@@ -25,37 +25,7 @@ namespace Module3_WpfLesson1
         public WpfMailSender()
         {
             InitializeComponent();
-            cbSenderSelect.ItemsSource = VariablesClass.Senders;
-            cbSenderSelect.DisplayMemberPath = "Key";
-            cbSenderSelect.SelectedValuePath = "Value";
         }
-
-
-        ///// <summary>
-        ///// Класс, который отвечает за работу с базой данных
-        ///// </summary>
-        //public class DBclass
-        //{
-        //    private EmailsDataContext emails = new EmailsDataContext();
-        //    public IQueryable<Email> Emails
-        //    {
-        //        get
-        //        {
-        //            return from c in emails.Emails select c;
-        //        }
-        //    }
-
-        //}
-
-        //DBclass db = new DBclass();
-
-        //private void btnSendEmail_Click(object sender, RoutedEventArgs e)
-        //{
-        //    Config.password = passwordBox.Password;
-        //    TextRange range = new TextRange(rtbMessage.Document.ContentStart, rtbMessage.Document.ContentEnd);
-
-        //    EmailSendServiceClass.SMTPClient(MailSubjectText.Text, range == null ? "" : range.Text);
-        //}
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
@@ -67,17 +37,6 @@ namespace Module3_WpfLesson1
         {
             tabControl1.SelectedItem = tabPlaner;
         }
-
-        private void btnSend_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void btnSendEmail_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
 
         private void tscTabSwitcher_btnNextClick(object sender, RoutedEventArgs e)
         {
