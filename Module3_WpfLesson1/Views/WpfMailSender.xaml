@@ -5,8 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:vm="clr-namespace:Module3_WpfLesson1.ViewModel"
         xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+        xmlns:validationrules="clr-namespace:Module3_WpfLesson1.ValidationRules"
         mc:Ignorable="d"
         Title="MainWindow" Height="700" Width="812">
+    <Window.Resources>
+        <ControlTemplate x:Key="EmailTextErrorTemplate">
+            <StackPanel Orientation="Horizontal">
+                <Border BorderBrush="Red" BorderThickness="5">
+                    <AdornedElementPlaceholder/>
+                </Border>
+                <TextBlock Foreground="red" FontWeight="Bold">Ошибка!</TextBlock>
+            </StackPanel>
+        </ControlTemplate>
+    </Window.Resources>
     <Window.DataContext>
         <vm:MainViewModel x:Name="mainViewModel"/>
     </Window.DataContext>
@@ -53,7 +64,14 @@
                         <ToolBarTray x:Name="tbtray" Height="60" VerticalAlignment="Top">
                             <ToolBar x:Name="btSender" VerticalAlignment="Center" Width="512" Height="30" HorizontalAlignment="Left">
                                 <Label x:Name="lSender" Content="Выбрать отправителя" Width="135" Height="25"/>
-                                <ComboBox x:Name="cbSenderSelect" IsEditable="True" Text ="{Binding To, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" Width="270" Height="25" ItemsSource="{Binding AdressesTo}" ToolTip="Выберать email отправителя">
+                                <ComboBox x:Name="cbSenderSelect" IsEditable="True" Width="270" Height="25" ItemsSource="{Binding AdressesTo}" ToolTip="Выбрать email отправителя" Validation.ErrorTemplate="{StaticResource EmailTextErrorTemplate}">
+                                    <ComboBox.Text>
+                                        <Binding Path="To" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                                            <Binding.ValidationRules>
+                                                <validationrules:EMailValidationRules/>
+                                            </Binding.ValidationRules>
+                                        </Binding>
+                                    </ComboBox.Text>
                                 </ComboBox>
                                 <Button x:Name="btnAddSender" Height="25" Width="25" ToolTip="Добавить">
                                     <Image Source="Images\add.png" HorizontalAlignment="Center"/>
@@ -67,9 +85,17 @@
                             </ToolBar>
                             <ToolBar x:Name="tbSmtp" HorizontalAlignment="Left" Height="30" VerticalAlignment="Center" Width="513" Band="1" BandIndex="0">
                                 <Label x:Name="lSmtp" Content="Выбрать smtp-сервер" Height="25" Width="135"/>
-                                <ComboBox x:Name="cbSmtpSelect" Height="25" Width="270" SelectedIndex="0" Text="{Binding SMTP, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" IsEditable="True" ToolTip="Выбрать smtp-сервер"/>
+                                <ComboBox x:Name="cbSmtpSelect" Height="25" Width="270" SelectedIndex="0" IsEditable="True" ToolTip="Выбрать smtp-сервер" Validation.ErrorTemplate="{StaticResource EmailTextErrorTemplate}" VerticalAlignment="Top">
+                                    <ComboBox.Text>
+                                        <Binding Path="SMTP" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                                            <Binding.ValidationRules>
+                                                <validationrules:SmtpValidationRules/>
+                                            </Binding.ValidationRules>
+                                        </Binding>
+                                    </ComboBox.Text>
+                                </ComboBox>
                                 <Button x:Name="btnAddSmtp" Width="25" Height="25" ToolTip="Добавить">
-                                    <Image Source="Images\add.png"/>
+                                <Image Source="Images\add.png"/>
                                 </Button>
                                 <Button x:Name="btnEditSmtp" Width="25" Height="25" ToolTip="Редактировать">
                                     <Image Source="Images\edit.png"/>
