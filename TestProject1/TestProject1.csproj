@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\AppForTest\AppForTest.csproj" />
+    <ProjectReference Include="..\Module3_WpfLesson1\Module3_WpfLesson1.csproj" />
   </ItemGroup>
 
 </Project>
