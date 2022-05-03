@@ -14,9 +14,4 @@
     <PackageReference Include="coverlet.collector" Version="3.1.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\AppForTest\AppForTest.csproj" />
-    <ProjectReference Include="..\Module3_WpfLesson1\Module3_WpfLesson1.csproj" />
-  </ItemGroup>
-
 </Project>
